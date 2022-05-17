@@ -4,6 +4,8 @@ import { sort } from "./utils/Utils";
 import { Start } from "./components/Start";
 import { Quiz } from "./components/Quiz";
 
+// Test commit!
+
 export const App = () => {
   const [hasStarted, setHasStarted] = useState(false);
   const [quizSettings, setQuizSettings] = useState({
