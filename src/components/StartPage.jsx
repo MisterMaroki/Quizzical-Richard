@@ -1,14 +1,20 @@
 import React from "react";
 
-export const Start = (props) => {
+export const StartPage = (props) => {
   return (
     <>
       <h1>Quizzical</h1>
 
+      <br />
+
       <div>
         <label>Number of questions</label>
         <br />
-        <select onChange={props.select} value={props.amount} name="amount">
+        <select
+          onChange={props.handleSelect}
+          value={props.amount}
+          name="amount"
+        >
           <option>Select</option>
           <option value="5">5</option>
           <option value="10">10</option>
@@ -16,10 +22,16 @@ export const Start = (props) => {
         </select>
       </div>
 
+      <br />
+
       <div>
         <label>Category</label>
         <br />
-        <select onChange={props.select} value={props.category} name="category">
+        <select
+          onChange={props.handleSelect}
+          value={props.category}
+          name="category"
+        >
           <option>Select</option>
           <option value="9">General</option>
           <option value="10">Books</option>
@@ -27,11 +39,13 @@ export const Start = (props) => {
         </select>
       </div>
 
+      <br />
+
       <div>
         <label>Difficulty</label>
         <br />
         <select
-          onChange={props.select}
+          onChange={props.handleSelect}
           value={props.difficulty}
           name="difficulty"
         >
@@ -42,7 +56,9 @@ export const Start = (props) => {
         </select>
       </div>
 
-      <button onClick={props.start}>Start</button>
+      <br />
+
+      <button onClick={props.handleStart}>Start</button>
     </>
   );
 };
