@@ -1,11 +1,7 @@
 import React from "react";
 
-export const QuestionElement = () => {
-  return (
-    <>
-      <p>QuestionElement</p>
-    </>
-  );
+export const QuestionElement = (props) => {
+  return <h1>{props.question}</h1>;
 };
 
 // OLD CODE BELOW
