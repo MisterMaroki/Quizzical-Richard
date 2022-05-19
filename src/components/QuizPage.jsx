@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { nanoid } from "nanoid";
+import he from "he"
 import { sort } from "../utils/Utils";
 import { QuestionElement } from "./QuestionElement";
 import { AnswerElement } from "./AnswerElement";
+
 
 export const QuizPage = () => {
   const [quizData, setQuizData] = useState([]);
@@ -10,7 +12,6 @@ export const QuizPage = () => {
   useEffect(() => {
     const TEST_URL =
       "https://opentdb.com/api.php?amount=2&category=9&difficulty=easy&type=multiple";
-
     fetch(TEST_URL)
       .then((res) => res.json())
       // .then((data) => console.log(data))
@@ -31,7 +32,7 @@ export const QuizPage = () => {
           });
 
           return {
-            question: item.question, // Decode!
+            question: he.decode(item.question), // Decode!
             answer: sort(answerDataRaw),
             id: nanoid(),
             key: nanoid(),
@@ -39,16 +40,16 @@ export const QuizPage = () => {
         });
 
         setQuizData(quizDataRaw);
-        console.log(quizData);
       });
   }, []);
+  console.log(quizData);
 
   const quizDataMap = quizData.map((item) => {
     return (
       <>
         <QuestionElement question={item.question} key={nanoid()} />
         <div>
-          {item.answers.map((answer) => {
+          {item.answers?.map((answer) => {
             return (
               <AnswerElement
                 answer={answer.answer}

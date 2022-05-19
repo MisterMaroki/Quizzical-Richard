@@ -1,5 +1,9 @@
 import React from "react";
 
 export const AnswerElement = (props) => {
-  return <>{props.answer}</>;
+  return (
+    <>
+      <p>{props.answer}</p>
+    </>
+  );
 };

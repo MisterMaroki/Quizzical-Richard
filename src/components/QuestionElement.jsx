@@ -1,7 +1,11 @@
 import React from "react";
 
 export const QuestionElement = (props) => {
-  return <h1>{props.question}</h1>;
+  return (
+    <>
+      <h1>{props.question}</h1>
+    </>
+  );
 };
 
 // OLD CODE BELOW
