@@ -5,8 +5,8 @@ import { sort } from '../utils/Utils';
 import { QuestionElement } from './QuestionElement';
 import { AnswerElement } from './AnswerElement';
 
-export const QuizPage = () => {
-	const [quizData, setQuizData] = useState([]);
+export const QuizPage = (props) => {
+  const [quizData, setQuizData] = useState([]);
 
 	//this useEffect runs twice when you are in dvelopment mode but when you promote to production the useEffect should only run once
 	//learn more about that here https://www.codingdeft.com/posts/react-use-effect-running-twice/
@@ -16,9 +16,14 @@ export const QuizPage = () => {
 
 	//exctracted these functions to arrow in function scope
 	const getQuizData = async () => {
-		const TEST_URL =
-			'https://opentdb.com/api.php?amount=2&category=9&difficulty=easy&type=multiple';
-		fetch(TEST_URL)
+		 const AMOUNT = props.quizSettings.amount;
+    const CATEGORY = props.quizSettings.category;
+    const DIFFICULTY = props.quizSettings.difficulty;
+    const URL = `https://opentdb.com/api.php?amount=${AMOUNT}&category=${CATEGORY}&difficulty=${DIFFICULTY}&type=multiple`;
+    const TEST_URL =
+      'https://opentdb.com/api.php?amount=2&category=9&difficulty=easy&type=multiple';
+
+    fetch(TEST_URL)
 			.then((res) => res.json())
 			// .then((data) => console.log(data))
 			.then((data) => {
@@ -54,6 +59,7 @@ export const QuizPage = () => {
 		});
 		return answerDataRaw;
 	};
+  
 	const quizDataMap = quizData.map((item) => {
 		return (
 			<>
@@ -76,5 +82,6 @@ export const QuizPage = () => {
 		);
 	});
 
-	return <>{quizDataMap}</>;
+
+  return <>{quizDataMap}</>;
 };
