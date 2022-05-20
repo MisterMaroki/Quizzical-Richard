@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { GlobalStyle } from "./GlobalStyles"
 import { StartPage } from "./components/StartPage";
 import { QuizPage } from "./components/QuizPage";
 
@@ -23,8 +24,9 @@ export const App = () => {
 
   return (
     <>
+      <GlobalStyle />
       {hasStarted ? (
-        <QuizPage />
+        <QuizPage quizSettings={quizSettings} />
       ) : (
         <StartPage handleStart={handleStart} handleSelect={handleSelect} />
       )}
