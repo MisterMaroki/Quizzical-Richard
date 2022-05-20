@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export const AnswerElement = (props) => {
-  return (
-    <>
-      <p>{props.answer}</p>
-    </>
-  );
+	return (
+		<>
+			<p key={props.key}>{props.answer}</p>
+		</>
+	);
 };
